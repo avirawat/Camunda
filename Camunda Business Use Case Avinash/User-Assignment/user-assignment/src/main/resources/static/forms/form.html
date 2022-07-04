@@ -1,0 +1,58 @@
+<form class="form-horizontal">
+	<div class="form-group">
+
+		<label class="control-label col-md-4">Project Name </label>
+		<div class="col-md-8">
+			<input type="text" cam-variable-name="projectName"
+				cam-variable-type="String" required class="form-control" />
+		</div>
+		<label class="control-label col-md-4">Episode Title </label>
+		<div class="col-md-8">
+			<input type="text" cam-variable-name="episodeTitle"
+				cam-variable-type="String" required class="form-control" />
+		</div>
+		
+		
+			<label class="control-label col-md-4">Company Name </label>
+		<div class="col-md-8">
+			<input type="text" cam-variable-name="companyName"
+				cam-variable-type="String" required class="form-control" />
+		</div>
+		
+			<label class="control-label col-md-4">Territory Title </label>
+		<div class="col-md-8">
+			<input type="text" cam-variable-name="territoryTitle"
+				cam-variable-type="String" required class="form-control" />
+		</div>
+		
+		<label class="control-label col-md-4">Description </label>
+		<div class="col-md-8">
+			<input type="text" cam-variable-name="description"
+				cam-variable-type="String" required class="form-control" />
+		</div>
+		
+			<select id="priority" required cam-variable-name="priority" cam-variable-type="String">
+			<option value="Highest">Highest</option>
+           <option value="High">High</option>
+           <option value="Low" checked>Low</option>
+            <option value="Medium" checked>Medium</option>
+            <option value="Lowest">Lowest</option>
+         </select>
+		
+		  <div class="col-md-8">
+           		 <label for="text">Project Due Date:</label>
+				 <input type="date" id="projectDueDate" name="projectDueDate">
+			 </div>
+		
+		
+		<select id="projectType" required cam-variable-name="projectType" cam-variable-type="String">
+          <option value="Localization">Localization</option>
+           <option value="Audio Post Production" checked>Audio Post Production</option>
+         </select>
+
+	</div>
+
+	<script cam-script type="text/form-script">
+    // custom JavaScript goes here
+  </script>
+</form>

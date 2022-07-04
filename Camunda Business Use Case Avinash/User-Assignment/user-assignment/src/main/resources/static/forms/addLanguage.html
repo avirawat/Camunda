@@ -1,0 +1,25 @@
+<form class="form-horizontal">
+  <div class="form-group">
+     	<div class="col-md-8">
+    	   <label class="control-label col-md-4">Add languages (Click +)</label>
+      		<input type="checkbox"
+             	cam-variable-name="addLanguage"
+             	cam-variable-type="Boolean"
+             	class="form-control" />
+        </div>
+        
+		<div class="col-md-8">
+		<label class="control-label col-md-4"> Select Language </label>
+		<select id="languageType" required cam-variable-name="languageType" cam-variable-type="String">
+           <option value="English" checked>English</option>
+           <option value="Hindi" >Hindi</option>
+           <option value="Tamil" >Tamil</option>
+           <option value="Telugu" >Telugu</option>
+        </select>
+        </div>
+  </div>
+
+  <script cam-script type="text/form-script">
+    // custom JavaScript goes here
+  </script>
+</form>

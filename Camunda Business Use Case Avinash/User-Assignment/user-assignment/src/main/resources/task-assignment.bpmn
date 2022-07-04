@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0fuam2f" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <bpmn:process id="taskAssignment" name="task-assignment" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0xbh00f</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0rdh8yk" name="Project Created">
+      <bpmn:incoming>Flow_02qbfwh</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="formSelectTask" name="Form for Selecting Task" camunda:formKey="embedded:app:forms/selectTaskFormLocal.html" camunda:candidateGroups="management">
+      <bpmn:incoming>Flow_0324c0k</bpmn:incoming>
+      <bpmn:outgoing>Flow_0c0bmmi</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:businessRuleTask id="Activity_07nq8m5" name="Assign Task" camunda:resultVariable="assignedUser" camunda:decisionRef="taskAssignment" camunda:mapDecisionResult="singleEntry">
+      <bpmn:incoming>Flow_0c0bmmi</bpmn:incoming>
+      <bpmn:outgoing>Flow_00njtcl</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:userTask id="sendingMail" name="Claim &#38; Complete Task" camunda:assignee="${assignedUser}" camunda:candidateGroups="management">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_00njtcl</bpmn:incoming>
+      <bpmn:outgoing>Flow_02qbfwh</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0c0bmmi" sourceRef="formSelectTask" targetRef="Activity_07nq8m5" />
+    <bpmn:sequenceFlow id="Flow_02qbfwh" sourceRef="sendingMail" targetRef="Event_0rdh8yk" />
+    <bpmn:sequenceFlow id="Flow_00njtcl" sourceRef="Activity_07nq8m5" targetRef="sendingMail" />
+    <bpmn:sequenceFlow id="Flow_0324c0k" sourceRef="Activity_15fgynn" targetRef="formSelectTask" />
+    <bpmn:serviceTask id="Activity_15fgynn" name="Language Checker" camunda:asyncBefore="true" camunda:class="com.camunda.training.service.LanguageChecker">
+      <bpmn:incoming>Flow_02fv3yk</bpmn:incoming>
+      <bpmn:incoming>Flow_0xbh00f</bpmn:incoming>
+      <bpmn:outgoing>Flow_0324c0k</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_16r1710" name="Duplicate Languages" camunda:candidateGroups="management">
+      <bpmn:incoming>Flow_1e1uu9l</bpmn:incoming>
+      <bpmn:outgoing>Flow_02fv3yk</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0xbh00f" sourceRef="StartEvent_1" targetRef="Activity_15fgynn" />
+    <bpmn:sequenceFlow id="Flow_02fv3yk" sourceRef="Activity_16r1710" targetRef="Activity_15fgynn" />
+    <bpmn:boundaryEvent id="Event_1lifzh6" name="Duplicate Error" attachedToRef="Activity_15fgynn">
+      <bpmn:outgoing>Flow_1e1uu9l</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_133pomu" errorRef="Error_0ajki4t" camunda:errorCodeVariable="codeError" camunda:errorMessageVariable="codeMess" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1e1uu9l" sourceRef="Event_1lifzh6" targetRef="Activity_16r1710" />
+  </bpmn:process>
+  <bpmn:error id="Error_1xi5i38" name="dup_tweet_error" errorCode="dup_tweet_error" camunda:errorMessage="Duplicate Tweet" />
+  <bpmn:error id="Error_0ajki4t" name="dup_language_error" errorCode="dup_language_error" camunda:errorMessage="Language Error" />
+  <bpmn:error id="Error_1uqfpw1" name="dup_language_error" errorCode="dup_language_error" camunda:errorMessage="Duplicate Language Name" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="taskAssignment">
+      <bpmndi:BPMNEdge id="Flow_0324c0k_di" bpmnElement="Flow_0324c0k">
+        <di:waypoint x="550" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00njtcl_di" bpmnElement="Flow_00njtcl">
+        <di:waypoint x="840" y="117" />
+        <di:waypoint x="870" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xbh00f_di" bpmnElement="Flow_0xbh00f">
+        <di:waypoint x="188" y="117" />
+        <di:waypoint x="450" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02qbfwh_di" bpmnElement="Flow_02qbfwh">
+        <di:waypoint x="970" y="117" />
+        <di:waypoint x="1012" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0c0bmmi_di" bpmnElement="Flow_0c0bmmi">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="740" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02fv3yk_di" bpmnElement="Flow_02fv3yk">
+        <di:waypoint x="450" y="310" />
+        <di:waypoint x="370" y="310" />
+        <di:waypoint x="370" y="140" />
+        <di:waypoint x="450" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e1uu9l_di" bpmnElement="Flow_1e1uu9l">
+        <di:waypoint x="500" y="175" />
+        <di:waypoint x="500" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rdh8yk_di" bpmnElement="Event_0rdh8yk">
+        <dc:Bounds x="1012" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="992" y="163" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0d5ov6r_di" bpmnElement="formSelectTask">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ejnbp2_di" bpmnElement="Activity_07nq8m5">
+        <dc:Bounds x="740" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08qf25s_di" bpmnElement="sendingMail">
+        <dc:Bounds x="870" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0dygoqi_di" bpmnElement="Activity_15fgynn">
+        <dc:Bounds x="450" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07dfsz6_di" bpmnElement="Activity_16r1710">
+        <dc:Bounds x="450" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1nmnpmi_di" bpmnElement="Event_1lifzh6">
+        <dc:Bounds x="482" y="139" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="512" y="182" width="75" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="riskRating2" name="Risk Rating" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.0.0">
+  <decision id="riskRating" name="Risk Rating">
+    <decisionTable id="DecisionTable_1tk7e98">
+      <input id="Input_1" label="Car">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>car</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1k0u2al" label="Model">
+        <inputExpression id="LiteralExpression_1hdp05a" typeRef="string">
+          <text>model</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Risk Rating" name="risk" typeRef="string" />
+      <rule id="DecisionRule_03g1fzf">
+        <inputEntry id="UnaryTests_0ew3df0">
+          <text>"Porsche"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11zm68y">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ylj7tp">
+          <text>"red"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0uph6i6">
+        <inputEntry id="UnaryTests_08scp22">
+          <text>"BMW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iopd4m">
+          <text>"X3"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ybmcwv">
+          <text>"yellow"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rjy6tf">
+        <inputEntry id="UnaryTests_0839svz">
+          <text>"BMW"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s310bp">
+          <text>"318i","525i","735i"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1v3mul0">
+          <text>"green"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0j34sh5">
+        <inputEntry id="UnaryTests_0q8k6xt">
+          <text>"Audi"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12415ke">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09ecevp">
+          <text>"green"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09muydu">
+        <inputEntry id="UnaryTests_1m33azq">
+          <text>"Volkswagen"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g2i1xm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n9beh1">
+          <text>"green"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="riskRating">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

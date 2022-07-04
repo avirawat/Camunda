@@ -1,0 +1,105 @@
+<form class="form-horizontal">
+	<div class="form-group">
+		
+		<label class="control-label col-md-4">Language </label>
+		<div class="col-md-8">
+		<select id="languageType" required cam-variable-name="languageType" cam-variable-type="String">
+           <option value="English" checked>English</option>
+           <option value="Hindi" >Hindi</option>
+           <option value="Tamil" >Tamil</option>
+           <option value="Telugu" >Telugu</option>
+        </select>
+        </div>
+        
+    	<div class="col-md-8">
+    	   <label class="control-label col-md-4">Dialogue Editing</label>
+      		<input type="checkbox"
+             	cam-variable-name="dialogueEditing"
+             	cam-variable-type="Boolean"
+             	class="form-control" />
+        </div>
+        <div class="col-md-8">
+            <label class="control-label col-md-4">Foley</label>
+      		<input type="checkbox"
+             	cam-variable-name="foley"
+             	cam-variable-type="Boolean"
+             	class="form-control" />
+         </div>
+    
+         <div class="col-md-8">
+             <label class="control-label col-md-4">Voice Editing</label>
+            <input type="checkbox"
+             	cam-variable-name="voiceEditing"
+             	cam-variable-type="Boolean"
+             	class="form-control" />
+           </div>
+            <div class="col-md-8">
+             <label class="control-label col-md-4">Mixing</label>
+              <input type="checkbox"
+             	cam-variable-name="mixing"
+             	cam-variable-type="Boolean"
+             	class="form-control" />
+            </div>
+             <div class="col-md-8">
+             <label class="control-label col-md-4">Music Editing</label>
+              <input type="checkbox"
+             	cam-variable-name="musicEditing"
+             	cam-variable-type="Boolean"
+             	class="form-control" />
+            </div>
+             <div class="col-md-8">
+           		 <label for="text">Due Date:</label>
+				 <input type="date" id="dueDate" name="dueDate">
+			 </div>
+
+	</div>
+
+	<script cam-script type="text/form-script">
+    // custom JavaScript goes here
+  </script>
+</form>
+        
+		
+		<!-- <div class="col-md-8">
+		<label class="control-label col-md-4">Dialogue Editing 
+			<input type="text" cam-variable-name="dialogueEditing"
+				cam-variable-type="String" required class="form-control" /> </label>
+		</div>
+		<label class="control-label col-md-4">Foley </label>
+		<div class="col-md-8">
+			<input type="text" cam-variable-name="foley"
+				cam-variable-type="String" required class="form-control" />
+		</div>
+
+		<label class="control-label col-md-4">Music Editing </label>
+		<div class="col-md-8">
+			<input type="text" cam-variable-name="musicEditing"
+				cam-variable-type="String" required class="form-control" />
+		</div>
+		<label class="control-label col-md-4">Voice Editing </label>
+		<div class="col-md-8">
+			<input type="text" cam-variable-name="voiceEditing"
+				cam-variable-type="String" required class="form-control" />
+		</div>
+		<label class="control-label col-md-4">Mixing </label>
+		<div class="col-md-8">
+			<input type="text" cam-variable-name="mixing"
+				cam-variable-type="String" required class="form-control" />
+		</div> -->
+		
+		<!--Due Date  -->
+		
+			<!-- 	<div class="col-md-8">	
+			<input type="checkbox" name="selectTask" value="dialogueEditing">Dialogue Editing <br>
+        	<input type="checkbox" name="selectTask" value="foley">Foley <br>
+        	<input type="checkbox" name="selectTask" value="musicEditing">Music Editing <br>
+        	<input type="checkbox" name="selectTask" value="voiceEditing">Voice Editing <br>
+        	<input type="checkbox" name="selectTask" value="mixing">Mixing <br>
+        	<label for="dueDate">Due Date:</label>
+			<input type="date" id="dueDate" name="dueDate">
+       
+			
+		</div> -->
+		
+		
+		

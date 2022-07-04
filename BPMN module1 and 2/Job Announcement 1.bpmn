@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0" camunda:diagramRelationId="32498268-05fb-4e96-8779-7328939b9fa5" xmlns:camunda="http://camunda.org/schema/1.0/bpmn">
+  <bpmn:collaboration id="Collaboration_1p2m9r2">
+    <bpmn:participant id="Participant_04rmxfd" name="Our company" processRef="Process_1"/>
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:laneSet>
+      <bpmn:lane id="Lane_03hwqgs" name="Hiring dept.">
+        <bpmn:flowNodeRef>Task_15dw2jq</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0q5fpfr" name="HR dept.">
+        <bpmn:flowNodeRef>EndEvent_0j41qox</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_036z1m4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_17gpqsm</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_12rv8v3</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Vacancy &#10;available">
+      <bpmn:outgoing>SequenceFlow_1rlnmmr</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Task_15dw2jq" name="Report vacancy via e-mail">
+      <bpmn:incoming>SequenceFlow_1rlnmmr</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1okkg59</bpmn:outgoing>
+      <bpmn:property id="Property_0tp17sv" name="__targetRef_placeholder"/>
+      <bpmn:dataInputAssociation id="DataInputAssociation_18glu2j">
+        <bpmn:sourceRef>DataObjectReference_172cjys</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0tp17sv</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:dataObjectReference id="DataObjectReference_172cjys" name="Excel Spreadsheet" dataObjectRef="DataObject_1obi6ci"/>
+    <bpmn:dataObject id="DataObject_1obi6ci"/>
+    <bpmn:endEvent id="EndEvent_0j41qox" name="Vacancy &#10;filled">
+      <bpmn:incoming>SequenceFlow_0heuhzq</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1rlnmmr" sourceRef="StartEvent_1" targetRef="Task_15dw2jq"/>
+    <bpmn:sequenceFlow id="SequenceFlow_1okkg59" sourceRef="Task_15dw2jq" targetRef="Task_036z1m4"/>
+    <bpmn:sequenceFlow id="SequenceFlow_0heuhzq" sourceRef="Task_12rv8v3" targetRef="EndEvent_0j41qox"/>
+    <bpmn:sequenceFlow id="SequenceFlow_0ewqukn" sourceRef="Task_036z1m4" targetRef="Task_17gpqsm"/>
+    <bpmn:sequenceFlow id="SequenceFlow_1bv8t0y" sourceRef="Task_17gpqsm" targetRef="Task_12rv8v3"/>
+    <bpmn:task id="Task_036z1m4" name="Advertise job">
+      <bpmn:incoming>SequenceFlow_1okkg59</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ewqukn</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_17gpqsm" name="Check applications">
+      <bpmn:incoming>SequenceFlow_0ewqukn</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1bv8t0y</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_12rv8v3" name="Fill vacancy">
+      <bpmn:incoming>SequenceFlow_1bv8t0y</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0heuhzq</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:textAnnotation id="TextAnnotation_1bgmcxy">
+      <bpmn:text>Job ad (website, job sites,...)</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_00v24r3" sourceRef="Task_036z1m4" targetRef="TextAnnotation_1bgmcxy"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1p2m9r2">
+      <bpmndi:BPMNShape id="Participant_04rmxfd_di" bpmnElement="Participant_04rmxfd">
+        <dc:Bounds x="31" y="20" width="872" height="340"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0q5fpfr_di" bpmnElement="Lane_0q5fpfr">
+        <dc:Bounds x="61" y="201" width="842" height="159"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_03hwqgs_di" bpmnElement="Lane_03hwqgs">
+        <dc:Bounds x="61" y="20" width="842" height="181"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1bv8t0y_di" bpmnElement="SequenceFlow_1bv8t0y">
+        <di:waypoint x="623" y="271"/>
+        <di:waypoint x="672" y="271"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="602.5" y="256" width="90" height="0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ewqukn_di" bpmnElement="SequenceFlow_0ewqukn">
+        <di:waypoint x="478" y="271"/>
+        <di:waypoint x="523" y="271"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="455.5" y="256" width="90" height="0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0heuhzq_di" bpmnElement="SequenceFlow_0heuhzq">
+        <di:waypoint x="772" y="271"/>
+        <di:waypoint x="829" y="271"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="755.5" y="256" width="90" height="0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1okkg59_di" bpmnElement="SequenceFlow_1okkg59">
+        <di:waypoint x="338" y="137"/>
+        <di:waypoint x="358" y="137"/>
+        <di:waypoint x="358" y="271"/>
+        <di:waypoint x="378" y="271"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="328" y="204" width="90" height="0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1rlnmmr_di" bpmnElement="SequenceFlow_1rlnmmr">
+        <di:waypoint x="173" y="137"/>
+        <di:waypoint x="238" y="137"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="206" y="112" width="0" height="0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_13mzbel_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="137" y="119" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="134" y="155" width="44" height="25"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_15dw2jq_di" bpmnElement="Task_15dw2jq">
+        <dc:Bounds x="238" y="97" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_172cjys_di" bpmnElement="DataObjectReference_172cjys">
+        <dc:Bounds x="270" y="27" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="189" y="33" width="63" height="25"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0j41qox_di" bpmnElement="EndEvent_0j41qox">
+        <dc:Bounds x="828.8831300813008" y="253" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="827" y="289" width="42" height="25"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_14k3new_di" bpmnElement="Task_036z1m4">
+        <dc:Bounds x="378" y="231" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1tz67qm_di" bpmnElement="Task_17gpqsm">
+        <dc:Bounds x="523" y="231" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1576vmc_di" bpmnElement="Task_12rv8v3">
+        <dc:Bounds x="672" y="231" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1bgmcxy_di" bpmnElement="TextAnnotation_1bgmcxy">
+        <dc:Bounds x="240" y="288" width="109" height="42"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_00v24r3_di" bpmnElement="Association_00v24r3">
+        <di:waypoint x="378" y="286"/>
+        <di:waypoint x="349" y="294"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_18glu2j_di" bpmnElement="DataInputAssociation_18glu2j">
+        <di:waypoint x="288" y="77"/>
+        <di:waypoint x="288" y="97"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
